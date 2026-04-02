@@ -1,23 +1,20 @@
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
 
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// THIS LINE SERVES YOUR FRONTEND
-app.use(express.static(path.join(__dirname, "public")));
-
-// THIS FIXES "Cannot GET /"
+// ROOT ROUTE (fixes your error)
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.send("AI Universe is running 🚀");
 });
 
-const PORT = process.env.PORT || 3000;
+// OPTIONAL TEST ROUTE
+app.get("/api", (req, res) => {
+  res.json({ message: "API working ✅" });
+});
+
+// PORT (Railway uses this automatically)
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
-  console.log("Server running on port", PORT);
+  console.log(`Server running on port ${PORT}`);
 });
-  
