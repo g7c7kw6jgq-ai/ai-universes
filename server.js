@@ -7,9 +7,9 @@ app.get("/", (req, res) => {
   res.send("AI Universe is running 🚀");
 });
 
-// IMPORTANT: use Railway port ONLY
-const PORT = process.env.PORT;
+// PORT
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log("Server running on port " + PORT);
 });
