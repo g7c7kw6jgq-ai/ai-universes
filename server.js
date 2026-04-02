@@ -2,19 +2,14 @@ import express from "express";
 
 const app = express();
 
-// ROOT ROUTE (fixes your error)
+// ROOT ROUTE
 app.get("/", (req, res) => {
   res.send("AI Universe is running 🚀");
 });
 
-// OPTIONAL TEST ROUTE
-app.get("/api", (req, res) => {
-  res.json({ message: "API working ✅" });
-});
+// IMPORTANT: use Railway port ONLY
+const PORT = process.env.PORT;
 
-// PORT (Railway uses this automatically)
-const PORT = process.env.PORT || 8080;
-
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
